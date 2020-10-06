@@ -2,6 +2,7 @@
   <div>
       <input type="text" v-model="newTodoItem" v-on:keyup.enter="addTodo">
       <button v-on:click="addTodo">add</button>
+    ...
   </div>
 </template>
 
