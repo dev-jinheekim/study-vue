@@ -5,8 +5,8 @@
 <script>
     export default {
         methods: {
-            deleteAll: () => {
-                localStorage.clear();
+            deleteAll: function () {
+                this.$emit('emitRemoveAll');
             }
         }
     }

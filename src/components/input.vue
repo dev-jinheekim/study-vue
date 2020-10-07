@@ -7,18 +7,18 @@
 
 <script>
     export default {
-        data: function() {
+        data: function () {
             return {
                 newTodoItem: ""
             }
         },
         methods: {
-            add: function() {
+            add: function () {
                 if (!this.newTodoItem) { return false;}
                 this.$emit('emitAdd', this.newTodoItem);
                 this.clearInput();
             },
-            clearInput: function() {
+            clearInput: function () {
                 this.newTodoItem = '';
             }
         }

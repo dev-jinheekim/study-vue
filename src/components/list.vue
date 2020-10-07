@@ -5,8 +5,8 @@
               v-bind:key="todoItem"
               v-bind:class="{completed: todoItem.completed}">
               <input type="checkbox" v-on:click="toggleComplete(todoItem)"/>
-              {{ todoItem.item }}
-              <button v-on:click="deleteItem(todoItem, index)">x</button>
+              {{ todoItem.name }}
+              <button v-on:click="remove(todoItem, index)">x</button>
           </li>
       </ul>
   </div>
@@ -16,21 +16,20 @@
     export default {
         props: ['propsData'],
         methods: {
-            deleteItem: function(todoItem, index) {
-                console.log(this.todoItems, todoItem, index);
-                localStorage.removeItem(todoItem.item);
-                this.todoItems.splice(index, 1);
+            remove: function (todoItem, index) {
+                this.$emit('emitRemove', todoItem, index);
             },
-            toggleComplete: function(todoItem) {
-                todoItem.completed = !todoItem.completed;
-                localStorage.removeItem(todoItem);
-                localStorage.setItem(todoItem, JSON.stringify(todoItem));
+            toggleComplete: function (todoItem) {
+                this.$emit('emitToggleComplete', todoItem);
             }
         }
     }
 </script>
 
 <style>
+    ul {
+        padding: 0;
+    }
     li {
         list-style: none;
     }
