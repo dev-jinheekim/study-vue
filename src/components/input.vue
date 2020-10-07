@@ -1,7 +1,7 @@
 <template>
   <div>
-      <input type="text" v-model="newTodoItem" v-on:keyup.enter="addTodo">
-      <button v-on:click="addTodo">add</button>
+      <input type="text" v-model="newTodoItem" v-on:keyup.enter="add">
+      <button v-on:click="add">add</button>
   </div>
 </template>
 
@@ -13,9 +13,9 @@
             }
         },
         methods: {
-            addTodo: function() {
-                let obj = {completed: false, item: this.newTodoItem};
-                localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
+            add: function() {
+                if (!this.newTodoItem) { return false;}
+                this.$emit('emitAdd', this.newTodoItem);
                 this.clearInput();
             },
             clearInput: function() {
