@@ -14,7 +14,8 @@
         },
         methods: {
             addTodo: function() {
-                localStorage.setItem(this.newTodoItem, this.newTodoItem);
+                let obj = {completed: false, item: this.newTodoItem};
+                localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
                 this.clearInput();
             },
             clearInput: function() {
